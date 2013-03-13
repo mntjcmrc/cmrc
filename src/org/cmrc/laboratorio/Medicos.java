@@ -23,9 +23,9 @@ public class Medicos {
 		return _medicos;
 	}
 
-	// public void set_medicos(ArrayList<Medico> _medicos) {
-	// this._medicos = _medicos;
-	// }
+	 public void set_medicos(ArrayList<Medico> _medicos) {
+	 this._medicos = _medicos;
+	 }
 
 	// Comprueba que el código de un médico no existe ya en el ArrayList de
 	// médicos
@@ -89,6 +89,7 @@ public class Medicos {
 		}
 	}
 	
+	// Devuelve los datos de todos los médicos
 	public String devolverDatos(){
 		String datos = "";
 		ArrayList<Medico> medicos = get_medicos();
@@ -99,4 +100,22 @@ public class Medicos {
 		
 		return datos;
 	}
+	
+	// Devuelve los datos del médico del código dado
+		public String buscar(String cod){
+			String medico = "";
+			ArrayList<Medico> medicos = this._medicos;
+			
+			if(existeMedico(cod)){
+				for(int i = 0; i < medicos.size(); i++){
+					if(medicos.get(i).equals(cod)){
+						medico = medicos.get(i).toString();
+					}
+				}
+			} else {
+				System.out.println("No existe un médico con ese código");
+			}
+			
+			return medico;
+		}
 }

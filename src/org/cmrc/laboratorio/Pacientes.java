@@ -22,9 +22,9 @@ public class Pacientes {
 		return _pacientes;
 	}
 
-//	public void set_pacientes(ArrayList<Paciente> pacientes) {
-//		_pacientes = pacientes;
-//	}
+	public void set_pacientes(ArrayList<Paciente> pacientes) {
+		_pacientes = pacientes;
+	}
 	
 	public boolean existePaciente(String nif) {
 		boolean existe = false;
@@ -40,10 +40,10 @@ public class Pacientes {
 		return existe;
 	}
 	
+
 	public void add(Paciente paciente){
 		this._pacientes.add(paciente);
 	}
-	
 
 	// Guarda el ArrayList de pacientes en un archivo llamado "pacientes.obj"
 	// Cambiarlo para que guarde el archivo en una carpeta creada en la del
@@ -84,6 +84,7 @@ public class Pacientes {
 		}
 	}
 	
+	// Devuelve una string con los datos de todos los pacientes
 	public String devolverDatos(){
 		String datos = "";
 		ArrayList<Paciente> pacientes = get_pacientes();
@@ -93,5 +94,23 @@ public class Pacientes {
 		}
 		
 		return datos;
+	}
+
+	// Devuelve los datos del paciente del nif dado
+	public String buscar(String nif){
+		String paciente = "";
+		ArrayList<Paciente> pacientes = this._pacientes;
+		
+		if(existePaciente(nif)){
+			for(int i = 0; i < pacientes.size(); i++){
+				if(pacientes.get(i).equals(nif)){
+					paciente = pacientes.get(i).toString();
+				}
+			}
+		} else {
+			System.out.println("No existe un paciente con ese nif");
+		}
+		
+		return paciente;
 	}
 }
