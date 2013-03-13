@@ -32,7 +32,7 @@ public class Pacientes {
 		ArrayList<Paciente> pacientes = get_pacientes();
 		int fin = pacientes.size();
 		for(int i = 0; i < fin; i++){
-			if(pacientes.get(i).get_nif() == nif){
+			if(pacientes.get(i).get_nif().equals(nif)){
 				existe = true;
 			}
 		}
@@ -99,7 +99,7 @@ public class Pacientes {
 	// Devuelve al paciente
 	// Modificado por necesidades en el menú
 	public Paciente buscar(String nif){
-		Paciente paciente = null;
+		Paciente paciente = new Paciente();
 		ArrayList<Paciente> pacientes = this._pacientes;
 		
 		if(existePaciente(nif)){
