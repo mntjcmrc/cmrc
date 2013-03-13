@@ -109,7 +109,7 @@ public class Medicos {
 		
 		if(existeMedico(cod)){
 			for(int i = 0; i < medicos.size(); i++){
-				if(medicos.get(i).equals(cod)){
+				if(medicos.get(i).get_codigo().equals(cod)){
 					medico = medicos.get(i);
 				}
 			}

@@ -104,7 +104,7 @@ public class Pacientes {
 		
 		if(existePaciente(nif)){
 			for(int i = 0; i < pacientes.size(); i++){
-				if(pacientes.get(i).equals(nif)){
+				if(pacientes.get(i).get_nif().equals(nif)){
 					paciente = pacientes.get(i);
 				}
 			}
