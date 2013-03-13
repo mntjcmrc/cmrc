@@ -50,9 +50,10 @@ public class Paciente implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "NIF: " + get_nif() + ", Nombre: " + get_nombre() + ", Direccion: " + get_direccion();
+		return "NIF: " + get_nif() + "\nNombre: " + get_nombre() + "\nDireccion: " + get_direccion() + "\n";
 	}
 	
+	// Pide los datos al usuario
 	public void datos(Pacientes pacientes){
 		String nif = "";
 		String nombre = "";

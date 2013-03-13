@@ -40,9 +40,10 @@ public class Medico implements java.io.Serializable {
 	
 	@Override
 	public String toString() {
-		return "Código: " + get_codigo() + ", Nombre: " + get_nombre();
+		return "Código: " + get_codigo() + "\nNombre: " + get_nombre() + "\n";
 	}
 	
+	// Pide los datos al usuario
 	public void datos(Medicos medicos){
 		String codigo = "";
 		String nombre = "";

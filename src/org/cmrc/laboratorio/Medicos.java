@@ -27,6 +27,8 @@ public class Medicos {
 	// this._medicos = _medicos;
 	// }
 
+	// Comprueba que el código de un médico no existe ya en el ArrayList de
+	// médicos
 	public boolean existeMedico(String codigo) {
 		boolean existe = false;
 
@@ -41,10 +43,15 @@ public class Medicos {
 		return existe;
 	}
 
+	// Añade el objeto de tipo Medico proporcionado al ArrayList
+	// Usado para mantener privado el ArrayList
 	public void add(Medico medico) {
 		this._medicos.add(medico);
 	}
 
+	// Guarda el ArrayList de médicos en un archivo llamado "medicos.obj"
+	// Cambiarlo para que guarde el archivo en una carpeta creada en la del
+	// usuario llamada ".laboratiorio"
 	public void guardar() {
 		ArrayList<Medico> medicos = this.get_medicos();
 		if (medicos.size() == 0) {
@@ -62,6 +69,8 @@ public class Medicos {
 		}
 	}
 
+	// Carga el archivo "medicos.obj"
+	// Cambiarlo para usar la carpeta ".laboratorio"
 	@SuppressWarnings("unchecked")
 	public void cargar() {
 		File f = new File("medicos.obj");
@@ -78,5 +87,16 @@ public class Medicos {
 		} else {
 			System.out.println("El fichero no existe");
 		}
+	}
+	
+	public String devolverDatos(){
+		String datos = "";
+		ArrayList<Medico> medicos = get_medicos();
+		
+		for(int i = 0; i < medicos.size(); i++){
+			datos += medicos.get(i).toString();
+		}
+		
+		return datos;
 	}
 }

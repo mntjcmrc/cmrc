@@ -83,4 +83,15 @@ public class Pacientes {
 			System.out.println("El fichero no existe");
 		}
 	}
+	
+	public String devolverDatos(){
+		String datos = "";
+		ArrayList<Paciente> pacientes = get_pacientes();
+		
+		for(int i = 0; i < pacientes.size(); i++){
+			datos += pacientes.get(i).toString();
+		}
+		
+		return datos;
+	}
 }
