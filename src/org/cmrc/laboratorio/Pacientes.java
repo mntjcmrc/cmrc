@@ -96,21 +96,22 @@ public class Pacientes {
 		return datos;
 	}
 
-	// Devuelve los datos del paciente del nif dado
-	public String buscar(String nif){
-		String paciente = "";
+	// Devuelve al paciente
+	// Modificado por necesidades en el menú
+	public Paciente buscar(String nif){
+		Paciente paciente = null;
 		ArrayList<Paciente> pacientes = this._pacientes;
 		
 		if(existePaciente(nif)){
 			for(int i = 0; i < pacientes.size(); i++){
 				if(pacientes.get(i).equals(nif)){
-					paciente = pacientes.get(i).toString();
+					paciente = pacientes.get(i);
 				}
 			}
+			return paciente;
 		} else {
 			System.out.println("No existe un paciente con ese nif");
 		}
-		
 		return paciente;
 	}
 }

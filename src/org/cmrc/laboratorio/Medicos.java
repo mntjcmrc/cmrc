@@ -101,21 +101,23 @@ public class Medicos {
 		return datos;
 	}
 	
-	// Devuelve los datos del médico del código dado
-		public String buscar(String cod){
-			String medico = "";
-			ArrayList<Medico> medicos = this._medicos;
-			
-			if(existeMedico(cod)){
-				for(int i = 0; i < medicos.size(); i++){
-					if(medicos.get(i).equals(cod)){
-						medico = medicos.get(i).toString();
-					}
+	// Devuelve al médico
+	// Modificado por necesidades en el menú
+	public Medico buscar(String cod){
+		Medico medico = null;
+		ArrayList<Medico> medicos = this._medicos;
+		
+		if(existeMedico(cod)){
+			for(int i = 0; i < medicos.size(); i++){
+				if(medicos.get(i).equals(cod)){
+					medico = medicos.get(i);
 				}
-			} else {
-				System.out.println("No existe un médico con ese código");
 			}
-			
 			return medico;
+		} else {
+			System.out.println("No existe un médico con ese código");
 		}
+		
+		return medico;
+	}
 }
