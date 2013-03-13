@@ -35,7 +35,7 @@ public class Medicos {
 		ArrayList<Medico> medicos = get_medicos();
 		int fin = medicos.size();
 		for (int i = 0; i < fin; i++) {
-			if (medicos.get(i).get_codigo() == codigo) {
+			if (medicos.get(i).get_codigo().equals(codigo)) {
 				existe = true;
 			}
 		}
@@ -104,7 +104,7 @@ public class Medicos {
 	// Devuelve al médico
 	// Modificado por necesidades en el menú
 	public Medico buscar(String cod){
-		Medico medico = null;
+		Medico medico = new Medico();
 		ArrayList<Medico> medicos = this._medicos;
 		
 		if(existeMedico(cod)){
