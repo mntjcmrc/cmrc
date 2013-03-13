@@ -7,8 +7,8 @@ public class Medico implements java.io.Serializable {
 	private static final long serialVersionUID = 47966467676619016L;
 
 	// Atributos
-	private String _codigo;
-	private String _nombre;
+	private String _codigo = "";
+	private String _nombre = "";
 		
 	// Constructor vacío
 	public Medico() {

@@ -7,9 +7,9 @@ public class Paciente implements java.io.Serializable {
 	private static final long serialVersionUID = -6266004356461597963L;
 	
 	// Atributos
-	private String _nif;
-	private String _nombre;
-	private String _direccion;
+	private String _nif = "";
+	private String _nombre = "";
+	private String _direccion = "";
 	
 	// Constructor vacío
 	public Paciente() {
