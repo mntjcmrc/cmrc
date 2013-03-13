@@ -1,6 +1,6 @@
 package org.cmrc.laboratorio;
 
-import org.general.rutinas.Rutinas;
+import org.cmrc.rutinas.Rutinas;
 
 public class Medico implements java.io.Serializable {
 
