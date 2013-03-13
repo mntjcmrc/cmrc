@@ -1,7 +1,10 @@
 package org.cmrc.laboratorio;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
@@ -41,6 +44,10 @@ public class Pacientes {
 		this._pacientes.add(paciente);
 	}
 	
+
+	// Guarda el ArrayList de pacientes en un archivo llamado "pacientes.obj"
+	// Cambiarlo para que guarde el archivo en una carpeta creada en la del
+	// usuario llamada ".laboratiorio"
 	public void guardar(){
 		ArrayList<Paciente> pacientes = this.get_pacientes();
 		if(pacientes.size() == 0){
@@ -54,6 +61,26 @@ public class Pacientes {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+	
+	// Carga el archivo "pacientes.obj"
+	// Cambiarlo para usar la carpeta ".laboratorio"
+	@SuppressWarnings("unchecked")
+	public void cargar() {
+		File f = new File("pacientes.obj");
+		if (f.exists()) {
+			try {
+				ObjectInputStream entrada = new ObjectInputStream(
+						new FileInputStream("pacientes.obj"));
+				this._pacientes = (ArrayList<Paciente>) entrada.readObject();
+				entrada.close();
+				System.out.println("-- Pacientes cargados con éxito --");
+			} catch (IOException | ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		} else {
+			System.out.println("El fichero no existe");
 		}
 	}
 }
