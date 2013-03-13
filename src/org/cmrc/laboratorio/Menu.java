@@ -13,8 +13,14 @@ public class Menu {
 		System.out.println("6 - Cargar");
 		System.out.println("0 - Salir");
 	}
+	
+	private static void opcionesEstandar(){
+		System.out.println("1 - Paciente");
+		System.out.println("2 - Medico");
+		System.out.println("3 - Analisis");
+	}
 
-	private static void opcionesEstandar() {
+	private static void opcionesVer() {
 		System.out.println("1 - Paciente");
 		System.out.println("2 - Pacientes");
 		System.out.println("3 - Medico");
@@ -81,15 +87,13 @@ public class Menu {
 			if (!run || menu.equals("p")) {
 
 			} else {
-				opcionesEstandar();
-				opcion = Rutinas.leeString("Elige una opción: ");
 				boolean atras = false;
 				switch (menu) {
 				case "ver":
-					atras = menuVer(pac, med, opcion, pacientes, medicos);
+					atras = menuVer(pac, med, pacientes, medicos);
 					break;
 				case "crear":
-//					menuCrear();
+					menuCrear(pacientes, medicos);
 				}
 				if(atras){
 					menu = "p";
@@ -99,11 +103,16 @@ public class Menu {
 		System.out.println("Fin del programa");
 	}
 
-	private static boolean menuVer(boolean pac, boolean med, String opcion, Pacientes pacientes, Medicos medicos) {
-		String nif = "";
+	private static boolean menuVer(boolean pac, boolean med, Pacientes pacientes, Medicos medicos) {
+		String opcion = "";
 		boolean atras = false;
 		
+		String nif = "";
 		String cod = "";
+		
+		opcionesVer();
+		opcion = Rutinas.leeString("Elige una opción: ");
+		
 		switch(opcion){
 		// Paciente
 		case "1":
@@ -111,7 +120,12 @@ public class Menu {
 				System.out.println("No hay pacientes\n");
 			} else {
 				nif = Rutinas.leeString("Introduce el nif del paciente: ");
-				System.out.println(pacientes.buscar(nif).toString());
+				Paciente paciente = pacientes.buscar(nif);
+				if(paciente.get_nif().equals("")){
+					
+				} else {
+					System.out.println(paciente.toString());
+				}
 			}
 			break;
 		// Pacientes
@@ -128,7 +142,12 @@ public class Menu {
 				System.out.println("No hay médicos\n");
 			} else {
 				cod = Rutinas.leeString("Introduce el código del médico: ");
-				System.out.println(medicos.buscar(cod).toString());
+				Medico medico = medicos.buscar(cod);
+				if(medico.get_codigo().equals("")){
+					
+				} else {
+					System.out.println(medico.toString());
+				}
 			}
 			break;
 		// Medicos
@@ -157,6 +176,38 @@ public class Menu {
 //			paciente.datos();
 //			break;
 		}
+		return atras;
+	}
+	
+	private static boolean menuCrear(Pacientes pacientes, Medicos medicos){
+		String opcion = "";
+		boolean atras = false;
+		
+		Paciente paciente = null;
+		Medico medico = null;
+//		Analisis analisis = null;
+		
+		opcionesEstandar();
+		opcion = Rutinas.leeString("Elige una opción: ");
+		
+		switch(opcion){
+		//Paciente
+		case "1":
+			paciente = new Paciente();
+			paciente.datos(pacientes);
+			break;
+		// Medico
+		case "2":
+			medico = new Medico();
+			medico.datos(medicos);
+			break;
+		// Analisis
+		case "3":
+			// Pendiente
+			break;
+		}
+		
+		
 		return atras;
 	}
 }
