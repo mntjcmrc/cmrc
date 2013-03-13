@@ -78,4 +78,18 @@ public class Paciente implements java.io.Serializable {
 		
 		pacientes.add(this);
 	}
+	
+	// Pide los datos del paciente para modificarlos
+	// No se permite modificar el NIF
+	public void datos(){
+		String nombre = "";
+		String direccion = "";
+		System.out.println(this.toString());
+		
+		nombre = Rutinas.leeString("Introduce el nuevo nombre del paciente: ");
+		direccion = Rutinas.leeString("Introduce la nueva dirección del paciente: ");
+		
+		this.set_nombre(nombre);
+		this.set_direccion(direccion);
+	}
 }

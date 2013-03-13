@@ -67,4 +67,14 @@ public class Medico implements java.io.Serializable {
 
 	}
 	
+	// Pide los datos del médico para modificarlos
+	// No se permite modificar el NIF
+	public void datos(){
+		String nombre = "";
+		System.out.println(this.toString());
+		
+		nombre = Rutinas.leeString("Introduce el nuevo nombre del paciente: ");
+		
+		this.set_nombre(nombre);
+	}
 }
