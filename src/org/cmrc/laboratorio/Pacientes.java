@@ -14,7 +14,7 @@ public class Pacientes {
 	
 	// Constructor vacío
 	public Pacientes(){
-		
+		this._pacientes = new ArrayList<Paciente>();
 	}
 
 	// Getter y setter
@@ -113,5 +113,14 @@ public class Pacientes {
 			System.out.println("No existe un paciente con ese nif");
 		}
 		return paciente;
+	}
+	
+	// Comprueba si el ArrayList tiene pacientes
+	public boolean hayPacientes(){
+		boolean hay = false;
+		if(this._pacientes.size() > 0){
+			hay = true;
+		}
+		return hay;
 	}
 }

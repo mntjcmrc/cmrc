@@ -15,7 +15,7 @@ public class Medicos {
 
 	// Constructor vacío
 	public Medicos() {
-
+		this._medicos = new ArrayList<Medico>();
 	}
 
 	// Getters y setters
@@ -119,5 +119,14 @@ public class Medicos {
 		}
 		
 		return medico;
+	}
+	
+	// Comprueba si el ArrayList tiene medicos
+	public boolean hayMedicos(){
+		boolean hay = false;
+		if(this._medicos.size() > 0){
+			hay = true;
+		}
+		return hay;
 	}
 }
