@@ -71,6 +71,29 @@ public class Rutinas {
 
 		return (num);
 	}
+	
+	public static float leeFloat(String mensaje) {
+		boolean error = false;
+		float num = 0;
+		String n="";
+		do {
+			error = false;
+			try {
+				System.out.println(mensaje);
+				n = br.readLine().replace(",", ".");
+				num = Float.parseFloat(n);
+			} catch (IOException io) {
+				System.out.println("Atencion problemas al leer desde teclado "
+						+ io.getMessage());
+				error = true;
+			} catch (NumberFormatException nfe) {
+				System.out.println("Ojito no es un numero float");
+				error = true;
+			}
+		} while (error);
+
+		return (num);
+	}
 
 	// Lee un entero entre limites
 	public static int leeEntero(String mensaje, int Inf, int Sup) {
