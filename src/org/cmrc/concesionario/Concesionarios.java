@@ -91,7 +91,7 @@ public class Concesionarios {
 		ArrayList<Concesionario> concesionarios = get_concesionarios();
 		
 		for(int i = 0; i < concesionarios.size(); i++){
-			datos += concesionarios.get(i).toString();
+			datos += concesionarios.get(i).toString() + "\n";
 		}
 		
 		return datos;
