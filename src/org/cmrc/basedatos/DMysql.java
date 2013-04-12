@@ -6,6 +6,10 @@ public class DMysql {
 	private String driver = "com.mysql.jdbc.Driver";
 	private String url = "jdbc:mysql://";
 	private Connection con = null;
+	
+	public Connection get_con(){
+		return this.con;
+	}
 
 	// Conecta con una base de datos y devuelve true o false
 	public boolean connect(String server, String database, String user,
@@ -59,35 +63,6 @@ public class DMysql {
 		}
 	}
 	
-	// Muestra los datos de los conductores de la tabla FacturaMecanica de la
-	// base de datos TallerMecanico
-	public void showConductores(String server, String database, String user,
-			String pass, String sentenciasql) {
-		if (this.connect(server, database, user, pass)) {
-			ResultSet rs = this.query(sentenciasql);
-			try {
-				while (rs.next()) {
-					String conductores = rs.getString("Nombre");
-					String marcas = rs.getString("Marca");
-					int importes = rs.getInt("Importe");
-					System.out.println("Conductor: " + conductores
-							+ ". Marca: " + marcas + ". Importe: " + importes);
-				}
-			} catch (SQLException e) {
-				System.out.println("Excepción capturada de SQL: "
-						+ e.toString());
-			} finally {
-				try {
-					if (this.con != null)
-						this.con.close();
-				} catch (SQLException e) {
-					System.out.println("No se puede cerrar la conexión: "
-							+ e.toString());
-				}
-			}
-		}
-	}
-	
 	// Crea una base de datos en el servidor dado con el nombre proporcionado
 	public void createDatabase(String server, String database, String user, String pass){
 		if(this.connect(server, "", user, pass)) {
@@ -95,6 +70,7 @@ public class DMysql {
 		}
 	}
 	
+	// Crea una tabla en el servidor dado
 	public void createTable(String server, String database, String user, String pass, String table){
 		if(this.connect(server, database, user, pass)) {
 			this.update("CREATE TABLE " + table);
