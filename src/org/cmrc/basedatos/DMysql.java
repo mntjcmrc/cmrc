@@ -6,8 +6,8 @@ public class DMysql {
 	private String driver = "com.mysql.jdbc.Driver";
 	private String url = "jdbc:mysql://";
 	private Connection con = null;
-	
-	public Connection get_con(){
+
+	public Connection get_con() {
 		return this.con;
 	}
 
@@ -48,8 +48,8 @@ public class DMysql {
 			return rs;
 		}
 	}
-	
-	public void update(String sentenciasql){
+
+	public void update(String sentenciasql) {
 		if (this.con == null) {
 			return;
 		} else {
@@ -62,18 +62,28 @@ public class DMysql {
 			}
 		}
 	}
-	
+
 	// Crea una base de datos en el servidor dado con el nombre proporcionado
-	public void createDatabase(String server, String database, String user, String pass){
-		if(this.connect(server, "", user, pass)) {
+	public void createDatabase(String server, String database, String user,
+			String pass) {
+		if (this.connect(server, "", user, pass)) {
 			this.update("CREATE DATABASE " + database);
 		}
 	}
-	
+
 	// Crea una tabla en el servidor dado
-	public void createTable(String server, String database, String user, String pass, String table){
-		if(this.connect(server, database, user, pass)) {
+	public void createTable(String server, String database, String user,
+			String pass, String table) {
+		if (this.connect(server, database, user, pass)) {
 			this.update("CREATE TABLE " + table);
+		}
+	}
+
+	public void close() {
+		try {
+			this.con.close();
+		} catch (SQLException e) {
+			System.out.println("Excepción capturada de SQL: " + e.toString());
 		}
 	}
 }
