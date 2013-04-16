@@ -8,7 +8,7 @@ import javax.swing.border.LineBorder;
 
 public class Icoche extends JFrame {
 	private static final long serialVersionUID = 7099199980543617818L;
-	
+
 	static JLabel lmatricula = new JLabel("Matrícula: ");
 	static JLabel lmarca = new JLabel("Marca: ");
 	static JLabel lmodelo = new JLabel("Modelo: ");
@@ -27,7 +27,7 @@ public class Icoche extends JFrame {
 	public static JButton btnsiguiente = new JButton("Siguiente");
 	public static JButton btnUltimo, btnPrimero;
 	public static JButton btnAnterior = new JButton("Anterior");
-	static JTextField labelResultado;
+	public static JButton btnmodificar;
 
 	public Icoche() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,11 +80,10 @@ public class Icoche extends JFrame {
 		btnUltimo.setBounds(375, 307, 96, 51);
 		panel1.add(btnUltimo);
 
-		labelResultado = new JTextField();
-		labelResultado.setEditable(false);
-		labelResultado.setBounds(1, 378, 289, 20);
-		panel1.add(labelResultado);
-		labelResultado.setColumns(10);
+		btnmodificar = new JButton("Modificar");
+		btnmodificar.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnmodificar.setBounds(473, 307, 111, 51);
+		panel1.add(btnmodificar);
 		PulsarBoton Boton = new PulsarBoton();
 		btnsiguiente.addActionListener(Boton);
 		btnAnterior.addActionListener(Boton);
