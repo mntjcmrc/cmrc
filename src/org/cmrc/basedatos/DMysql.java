@@ -6,9 +6,14 @@ public class DMysql {
 	private String driver = "com.mysql.jdbc.Driver";
 	private String url = "jdbc:mysql://";
 	private Connection con = null;
+	private int position;
 
 	public Connection get_con() {
 		return this.con;
+	}
+	
+	public int get_psition() {
+		return this.position;
 	}
 
 	// Conecta con una base de datos y devuelve true o false
