@@ -5,11 +5,12 @@ import java.awt.EventQueue;
 public class coches2 {
 	public static Icoche fcoche;
 	protected static Database bd;
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				bd = new Database();
-				bd.estableceConexion();
+				bd.cargaInicial("tcoches");
 				try {
 					fcoche = new Icoche();
 					fcoche.setVisible(true);
@@ -17,7 +18,6 @@ public class coches2 {
 					e.printStackTrace();
 				}
 			}
-		}
-	);	
-}
+		});
+	}
 }

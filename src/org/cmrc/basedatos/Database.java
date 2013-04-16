@@ -10,12 +10,11 @@ public class Database {
 	private ResultSet rs = null;
 
 	// Crea la conexión con la base de datos usando un objeto de tipo DMysql
-	public void estableceConexion() {
+	private void estableceConexion() {
 		dm.connect("localhost:3306", "bdcoches", "root", "abc123ABC");
 		try {
 			dm.get_con().setTransactionIsolation(
 					Connection.TRANSACTION_READ_COMMITTED);
-			cargaInicial("tcoches");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -24,21 +23,28 @@ public class Database {
 
 	// Hace una consulta sacando todos los datos de la tabla table y
 	// los carga en el vector datos
-	public void cargaInicial(String table) throws SQLException {
-		rs = dm.query("select MATRICULA,MARCA,MODELO,COLOR,ANIO,PRECIO "
-				+ " from " + table);
-		while (rs.next()) {
-			Coche coche = createCoche();
-			if (coche != null) {
-				// Fallo por no crear el vector, herp
-				Datos.get_datos().add(coche);
+	public void cargaInicial(String table) {
+		try {
+			estableceConexion();
+			rs = dm.query("select MATRICULA,MARCA,MODELO,COLOR,ANIO,PRECIO "
+					+ " from " + table);
+
+			while (rs.next()) {
+				Coche coche = createCoche();
+				if (coche != null) {
+					// Fallo por no crear el vector, herp
+					Datos.get_datos().add(coche);
+				}
 			}
-		}
-		dm.close();
-		
-		if(Datos.get_datos().size() != 0){
-			proceso.cargadatoscoches();
-			proceso.hab_botones();
+			rs.close();
+			dm.close();
+
+			if (Datos.get_datos().size() != 0) {
+				proceso.cargadatoscoches();
+				proceso.hab_botones();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -78,5 +84,4 @@ public class Database {
 
 		return coche;
 	}
-
 }
