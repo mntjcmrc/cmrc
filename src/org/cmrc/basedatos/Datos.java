@@ -4,7 +4,7 @@ import java.util.Vector;
 
 public class Datos {
 
-	protected static Vector<Coche> datos = new Vector<Coche>();
+	private static Vector<Coche> datos = new Vector<Coche>();
 	private static int position = 0;
 	
 	public static Vector<Coche> get_datos(){

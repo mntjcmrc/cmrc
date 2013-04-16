@@ -51,7 +51,7 @@ public class Database {
 		while (rs.next()) {
 			Coche coche = createCoche();
 			if (coche != null) {
-				Datos.datos.add(coche);
+				Datos.get_datos().add(coche);
 			}
 		}
 		rs.close();
